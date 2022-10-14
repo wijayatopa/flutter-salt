@@ -8,16 +8,33 @@ class ListScreen extends StatefulWidget {
 }
 
 class _ListScreenState extends State<ListScreen> {
-  //Buat variable untuk tahu posisi bottom nav bar yang nyala
-
   //mengambil sharedpreferences
   final Future<SharedPreferences> prefs = SharedPreferences.getInstance();
+  NotificationService notifService = NotificationService();
+
+  Future<dynamic> onReceiveNotif(int id, String? title, String? body) async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(title!),
+            content: Text(body!),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Kamu Mendapatkan $body')));
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        });
+  }
 
   int bottomNavBarIndex = 0;
   @override
   Widget build(BuildContext context) {
-    //posisi index = 0
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -84,17 +101,16 @@ class GridProduct extends StatelessWidget {
               crossAxisCount: 2,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
-              mainAxisExtent: 300,
+              mainAxisExtent: 350,
             ),
             // mainAxisExtent: 250,
             children: products
-                .map((e) => ProductWidget(
+                .map((e) => ListProductWidget(
                       product: e,
                     ))
                 .toList(),
           );
         }
-
         return Container();
       },
     );
@@ -123,7 +139,7 @@ class ListProduct extends StatelessWidget {
           return ListView.builder(
             itemCount: products.length,
             itemBuilder: (context, index) =>
-                ProductWidget(product: products[index]),
+                ListProductWidget(product: products[index]),
           );
         }
         return Container();
