@@ -58,15 +58,6 @@ class GridProductWidget extends StatelessWidget {
                         maxLines: 1,
                         softWrap: true,
                       ),
-                      // Text(
-                      //   product.description!,
-                      //   style: TextStyle(
-                      //     fontSize: 8,
-                      //     fontWeight: FontWeight.w500,
-                      //   ),
-                      //   maxLines: 2,
-                      //   overflow: TextOverflow.ellipsis,
-                      // ),
                     ],
                   ),
                 )

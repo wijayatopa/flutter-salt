@@ -1,9 +1,9 @@
 part of 'widgets.dart';
 
-class ProductWidget extends StatelessWidget {
+class ListProductWidget extends StatelessWidget {
   final ProductModel product;
 
-  const ProductWidget({super.key, required this.product});
+  const ListProductWidget({super.key, required this.product});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -22,7 +22,7 @@ class ProductWidget extends StatelessWidget {
             topRight: Radius.circular(12.0),
           ),
           child: Container(
-            color: const Color.fromARGB(255, 247, 66, 49),
+            color: const Color.fromARGB(255, 241, 168, 168),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -58,15 +58,6 @@ class ProductWidget extends StatelessWidget {
                         maxLines: 1,
                         softWrap: true,
                       ),
-                      // Text(
-                      //   product.description!,
-                      //   style: TextStyle(
-                      //     fontSize: 8,
-                      //     fontWeight: FontWeight.w500,
-                      //   ),
-                      //   maxLines: 2,
-                      //   overflow: TextOverflow.ellipsis,
-                      // ),
                     ],
                   ),
                 )
